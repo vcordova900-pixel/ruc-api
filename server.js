@@ -15,11 +15,16 @@ app.post("/consultar", async (req, res) => {
         try {
             let response = await axios.get(`https://api.apis.net.pe/v1/ruc?numero=${ruc}`);
 
-           resultados.push({
+        resultados.push({
             ruc: ruc,
-            nombre: response.data.nombre || "NO DATA",
+            nombre: response.data.nombre || "",
             estado: response.data.estado || "",
-            condicion: response.data.condicion || ""
+            condicion: response.data.condicion || "",
+            direccion: response.data.direccion || "",
+            distrito: response.data.distrito || "",
+            provincia: response.data.provincia || "",
+            departamento: response.data.departamento || "",
+            ubigeo: response.data.ubigeo || ""
         });
 
         } catch {
