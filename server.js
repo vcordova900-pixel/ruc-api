@@ -15,10 +15,12 @@ app.post("/consultar", async (req, res) => {
         try {
             let response = await axios.get(`https://api.apis.net.pe/v1/ruc?numero=${ruc}`);
 
-            resultados.push({
-                ruc: ruc,
-                nombre: response.data.nombre || "NO DATA"
-            });
+           resultados.push({
+            ruc: ruc,
+            nombre: response.data.nombre || "NO DATA",
+            estado: response.data.estado || "",
+            condicion: response.data.condicion || ""
+        });
 
         } catch {
             resultados.push({
